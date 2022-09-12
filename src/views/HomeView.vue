@@ -16,7 +16,7 @@
       </router-link>
     </div>
 
-    <form @submit.prevent="" class="search-box">
+    <form @submit.prevent="SearchMovies" class="search-box">
       <input type="text" placeholder="Search for your favorite movie..." v-model="search" />
       <input type="submit" value="Search" />
     </form>
@@ -26,14 +26,29 @@
 </template>
 
 <script>
+import env from '@/env.js';
 import { ref } from 'vue'
 export default {
   setup() {
     const search = ref('')
-    const movies = []
+    const movies = ref([])
+
+    const SearchMovies = () => {
+      if (search.value != "") {
+        fetch(`https://www.omdbapi.com/?apikey=${env.apikey}&s=${search.value}`)
+          .then(res => res.json())
+          .then(data => {
+            console.log(data)
+          })
+      } else {
+        alert("Please enter a movie title")
+      }
+    }
+
     return {
       search,
-      movies
+      movies,
+      SearchMovies
     }
   }
 };
