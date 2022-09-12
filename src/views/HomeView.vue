@@ -54,7 +54,6 @@ export default {
           .then(data => {
             movies.value = data.Search
             search.value = ""
-            console.log(data.Search)
           })
       } else {
         alert("Please enter a movie title")
