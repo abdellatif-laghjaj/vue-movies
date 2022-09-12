@@ -7,6 +7,11 @@ const routes = [
     name: 'home',
     component: HomeView
   },
+  {
+    path: '/movie/:id',
+    name: 'movie',
+    component: () => import('../views/MovieDetail.vue')
+  }
 ]
 
 const router = createRouter({
