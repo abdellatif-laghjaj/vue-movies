@@ -37,6 +37,21 @@ export default {
         position: relative;
         z-index: 0;
       }
+
+      .detail{
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 16px;
+        z-index: 1;
+        background-color: rgba(0, 0, 0, 0.6);
+        color: #fff;
+
+        h3{
+          margin-bottom: 16px;
+        }
+      }
     }
   }
 </style>
