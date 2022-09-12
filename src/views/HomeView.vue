@@ -2,96 +2,98 @@
   <div class="home">
     <div class="feature-card">
       <router-link to="/movie/tt0388629">
-        <img class="featured-image"
+        <img
+          class="featured-image"
           src="https://w0.peakpx.com/wallpaper/525/657/HD-wallpaper-one-piece-brook-one-piece-chopper-predator-franky-one-piece-jinbe-one-piece-monkey-d-luffy-nami-one-piece-nico-robin-roronoa-zoro-sanji-one-piece-usopp-one-piece.jpg"
-          alt="One piece">
+          alt="One piece"
+        />
         <div class="detail">
           <h3>One Piece</h3>
           <p>
-            Follows the adventures of Monkey D. Luffy and his pirate crew in order to find the greatest treasure ever
-            left by the legendary Pirate, Gold Roger. The famous mystery treasure named One Piece.
+            Follows the adventures of Monkey D. Luffy and his pirate crew in
+            order to find the greatest treasure ever left by the legendary
+            Pirate, Gold Roger. The famous mystery treasure named One Piece.
           </p>
         </div>
       </router-link>
     </div>
 
     <form @submit.prevent="" class="search-box">
-      <input type="text" placeholder="Search for a movie" v-model="search">
+      <input type="text" placeholder="Search for your favorite movie..." v-model="search" />
       <button type="submit">Search</button>
     </form>
 
-    <div class="movies-list">
-      Movies
-    </div>
+    <div class="movies-list">Movies</div>
   </div>
 </template>
 
 <script>
-
-export default {
-
-}
+export default {};
 </script>
 
 <style lang="scss">
-  .home{
-    .feature-card{
+.home {
+  .feature-card {
+    position: relative;
+
+    .featured-image {
+      display: block;
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
       position: relative;
-
-      .featured-image{
-        display: block;
-        width: 100%;
-        height: 300px;
-        object-fit: cover;
-        position: relative;
-        z-index: 0;
-      }
-
-      .detail{
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        padding: 16px;
-        z-index: 1;
-        background-color: rgba(0, 0, 0, 0.6);
-        color: #fff;
-
-        h3{
-          margin-bottom: 16px;
-        }
-      }
+      z-index: 0;
     }
 
-    .search-box{
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
+    .detail {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
       padding: 16px;
+      z-index: 1;
+      background-color: rgba(0, 0, 0, 0.6);
+      color: #fff;
 
-      input{
-        display: block;
-        appearance: none;
-        border: none;
-        outline: none;
-        background: none;
+      h3 {
+        margin-bottom: 16px;
+      }
+    }
+  }
 
-        &[type="text"]{
-          width: 100%;
-          padding: 10px 16px;
-          border-radius: 8px;
-          font-size: 18px;
-          color: #fff;
-          background-color: #496583;
-          margin-bottom: 16px;
-          transition: all 0.4s ease-in-out;
+  .search-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 16px;
 
-          &::placeholder{
-            color: #f3f3f3;
-          }
+    input {
+      display: block;
+      appearance: none;
+      border: none;
+      outline: none;
+      background: none;
+
+      &[type="text"] {
+        width: 100%;
+        padding: 10px 16px;
+        border-radius: 6px;
+        font-size: 16px;
+        color: #fff;
+        background-color: #334455;
+        margin-bottom: 16px;
+        transition: all 0.4s ease-in-out;
+
+        &::placeholder {
+          color: #f3f3f3;
+        }
+
+        &:focus {
+          box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
         }
       }
     }
   }
+}
 </style>
