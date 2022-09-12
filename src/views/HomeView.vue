@@ -14,6 +14,15 @@
         </div>
       </router-link>
     </div>
+
+    <form @submit.prevent="" class="search-box">
+      <input type="text" placeholder="Search for a movie" v-model="search">
+      <button type="submit">Search</button>
+    </form>
+
+    <div class="movies-list">
+      Movies
+    </div>
   </div>
 </template>
 
@@ -50,6 +59,37 @@ export default {
 
         h3{
           margin-bottom: 16px;
+        }
+      }
+    }
+
+    .search-box{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 16px;
+
+      input{
+        display: block;
+        appearance: none;
+        border: none;
+        outline: none;
+        background: none;
+
+        &[type="text"]{
+          width: 100%;
+          padding: 10px 16px;
+          border-radius: 8px;
+          font-size: 18px;
+          color: #fff;
+          background-color: #496583;
+          margin-bottom: 16px;
+          transition: all 0.4s ease-in-out;
+
+          &::placeholder{
+            color: #f3f3f3;
+          }
         }
       }
     }
