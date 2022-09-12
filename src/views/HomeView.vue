@@ -21,7 +21,18 @@
       <input type="submit" value="Search" />
     </form>
 
-    <div class="movies-list">Movies</div>
+    <div class="movies-list">
+      <div class="movie" v-for="movie in movies" :key="movie.imdbID">
+        <router-link :to="'/movie/' + movie.imdbID" class="movie-link">
+          <div class="product-image">
+            <img :src="movie.Poster" :alt="movie.Title">
+            <div class="type">{{ movie.Type }}</div>
+            <p class="y">{{ movie.Year }}</p>
+            <h3>{{ movie.Title }}</h3>
+          </div>
+        </router-link>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -38,7 +49,9 @@ export default {
         fetch(`https://www.omdbapi.com/?apikey=${env.apikey}&s=${search.value}`)
           .then(res => res.json())
           .then(data => {
-            console.log(data)
+            movies.value = data.Search
+            search.value = ""
+            console.log(data.Search)
           })
       } else {
         alert("Please enter a movie title")
@@ -130,6 +143,50 @@ export default {
 
         &:active {
           transform: scale(0.95);
+        }
+      }
+    }
+  }
+
+  .movies-list{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+
+    .movie{
+      max-width: 50%;
+      flex: 1 1 50%;
+      padding: 16px 8px;
+
+      .movie-link{
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+
+        .product-image{
+          position: relative;
+          display: block;
+
+          img{
+            display: block;
+            width: 100%;
+            height: 275px;
+            object-fit: cover;
+            transition: all 0.4s ease-in-out;
+            &:hover{
+              opacity: 0.5;
+            }
+          }
+
+          .type{
+            position: absolute;
+            padding: 8px 16px;
+            background-color: #42B883;
+            color: #fff;
+            border-radius: 8px;
+            top: 0;
+            left: 0;
+          }
         }
       }
     }
