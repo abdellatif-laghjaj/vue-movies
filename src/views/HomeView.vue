@@ -45,10 +45,11 @@ export default {
   setup() {
     const search = ref('')
     const movies = ref([])
-
+    const api_url = ref("https://www.omdbapi.com/")
+    
     const SearchMovies = () => {
       if (search.value != "") {
-        fetch(`https://www.omdbapi.com/?apikey=${env.apikey}&s=${search.value}`)
+        fetch(`${api_url}?apikey=${env.apikey}&s=${search.value}`)
           .then(res => res.json())
           .then(data => {
             movies.value = data.Search
@@ -63,10 +64,11 @@ export default {
     return {
       search,
       movies,
-      SearchMovies
+      SearchMovies,
     }
-  }
+  },
 };
+
 </script>
 
 <style lang="scss">
@@ -200,7 +202,7 @@ export default {
           color: #fff;
           border-radius: 0 0 8px 8px;
 
-          .year{
+          .year {
             font-size: 14px;
             margin-bottom: 8px;
           }
