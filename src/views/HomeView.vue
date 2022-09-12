@@ -45,7 +45,7 @@ export default {
   setup() {
     const search = ref('')
     const movies = ref([])
-    const api_url = ref("https://www.omdbapi.com/")
+    const api_url = "https://www.omdbapi.com/"
     
     const SearchMovies = () => {
       if (search.value != "") {
