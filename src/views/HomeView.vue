@@ -27,8 +27,10 @@
           <div class="product-image">
             <img :src="movie.Poster" :alt="movie.Title">
             <div class="type">{{ movie.Type }}</div>
-            <p class="y">{{ movie.Year }}</p>
-            <h3>{{ movie.Title }}</h3>
+            <div class="detail">
+              <p class="year">{{ movie.Year }}</p>
+              <h3>{{ movie.Title }}</h3>
+            </div>
           </div>
         </router-link>
       </div>
@@ -148,44 +150,63 @@ export default {
     }
   }
 
-  .movies-list{
+  .movies-list {
     display: flex;
     flex-wrap: wrap;
     margin: 0;
 
-    .movie{
+    .movie {
       max-width: 50%;
       flex: 1 1 50%;
       padding: 16px 8px;
 
-      .movie-link{
+      .movie-link {
         display: flex;
         flex-direction: column;
         height: 100%;
 
-        .product-image{
+        .product-image {
           position: relative;
           display: block;
 
-          img{
+          img {
             display: block;
             width: 100%;
             height: 275px;
             object-fit: cover;
             transition: all 0.4s ease-in-out;
-            &:hover{
+
+            &:hover {
               opacity: 0.5;
             }
           }
 
-          .type{
+          .type {
             position: absolute;
             padding: 8px 16px;
             background-color: #42B883;
             color: #fff;
-            border-radius: 8px;
-            top: 0;
+            border-radius: 0 8px 8px 0;
+            top: 16px;
             left: 0;
+            text-transform: capitalize;
+          }
+        }
+
+        .detail {
+          background-color: #334455;
+          padding: 16px 8px;
+          flex: 1 1 100%;
+          color: #fff;
+          border-radius: 0 0 8px 8px;
+
+          .year{
+            font-size: 14px;
+            margin-bottom: 8px;
+          }
+
+          h3 {
+            font-size: 18px;
           }
         }
       }
