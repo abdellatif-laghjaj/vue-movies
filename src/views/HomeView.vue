@@ -2,11 +2,9 @@
   <div class="home">
     <div class="feature-card">
       <router-link to="/movie/tt0388629">
-        <img
-          class="featured-image"
+        <img class="featured-image"
           src="https://w0.peakpx.com/wallpaper/525/657/HD-wallpaper-one-piece-brook-one-piece-chopper-predator-franky-one-piece-jinbe-one-piece-monkey-d-luffy-nami-one-piece-nico-robin-roronoa-zoro-sanji-one-piece-usopp-one-piece.jpg"
-          alt="One piece"
-        />
+          alt="One piece" />
         <div class="detail">
           <h3>One Piece</h3>
           <p>
@@ -20,7 +18,7 @@
 
     <form @submit.prevent="" class="search-box">
       <input type="text" placeholder="Search for your favorite movie..." v-model="search" />
-      <button type="submit">Search</button>
+      <input type="submit" value="Search" />
     </form>
 
     <div class="movies-list">Movies</div>
@@ -28,7 +26,17 @@
 </template>
 
 <script>
-export default {};
+import { ref } from 'vue'
+export default {
+  setup() {
+    const search = ref('')
+    const movies = []
+    return {
+      search,
+      movies
+    }
+  }
+};
 </script>
 
 <style lang="scss">
@@ -91,6 +99,22 @@ export default {};
 
         &:focus {
           box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+        }
+      }
+
+      &[type="submit"] {
+        width: 100%;
+        background-color: #42B883;
+        border-radius: 8px;
+        padding: 12px 16px;
+        color: #fff;
+        font-size: 18px;
+        text-transform: uppercase;
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+
+        &:active {
+          transform: scale(0.95);
         }
       }
     }
